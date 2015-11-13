@@ -3,6 +3,11 @@
 
 
 Vagrant.configure("2") do |config|
+    
+    # if you have a vagrant-cachier plugin, use it for apt caches
+    if Vagrant.has_plugin?("vagrant-cachier")
+        config.cache.scope = :box
+    end
 
     config.vm.box = "ubuntu/trusty64"
     config.ssh.forward_agent = true
